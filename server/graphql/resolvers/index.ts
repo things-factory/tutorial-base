@@ -1,16 +1,6 @@
-// import * as CommonCode from './common-code'
-// import * as CommonCodeDetail from './common-code-detail'
-//
-// export const queries = [
-//   CommonCode.Query,
-//   CommonCodeDetail.Query
-// ]
+import * as Tutorial from './tutorial'
+import * as TutorialRole from './tutorial-role'
 
-// export const mutations = [
-//   CommonCode.Mutation,
-//   CommonCodeDetail.Mutation
-// ]
+export const queries = [Tutorial.Query, TutorialRole.Query]
 
-export const queries = []
-
-export const mutations = []
+export const mutations = [Tutorial.Mutation, TutorialRole.Mutation]

@@ -1,5 +1,5 @@
-// import { Xxx } from './xxx'
+import { Tutorial } from './tutorial'
+import { TutorialRole } from './tutorial-role'
 
-export const entities = []
-
-export {}
+export const entities = [Tutorial, TutorialRole]
+export { Tutorial, TutorialRole }
