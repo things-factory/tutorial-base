@@ -1,14 +1,14 @@
 {
-  "name": "@things-factory/tutorial",
-  "version": "1.0.0",
+  "name": "@things-factory/tutorial-base",
+  "version": "2.5.2",
   "main": "dist-server/index.js",
   "browser": "client/index.js",
   "things-factory": true,
   "license": "MIT",
   "author": "horwengliang@gmail.com",
   "scripts": {
-    "serve": "things-factory tutorial",
-    "serve:dev": "npm run build:server && things-factory-dev tutorial",
+    "serve": "things-factory tutorial-base",
+    "serve:dev": "npm run build:server && things-factory-dev tutorial-base",
     "start:app": "things-factory-app",
     "start:app:android": "things-factory-app --platform=android",
     "emulate:app": "things-factory-app --emulate",
@@ -27,9 +27,10 @@
     "migration:run": "node ./node_modules/typeorm/cli.js migration:run",
     "migration:revert": "node ./node_modules/typeorm/cli.js migration:revert",
     "stop:dev": "kill $(lsof -t -i:3000,3001)",
-    "stop": "things-factory-stop tutorial"
+    "stop": "things-factory-stop tutorial-base"
   },
   "dependencies": {
+    "@things-factory/auth-base": "^2.5.0",
     "@things-factory/shell": "*"
   },
   "devDependencies": {}
