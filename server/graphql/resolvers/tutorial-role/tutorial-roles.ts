@@ -1,5 +1,6 @@
 import { ListParam, convertListParams } from '@things-factory/shell'
-import { getRepository } from 'typeorm'
+import { EntityManager, getRepository, SelectQueryBuilder } from 'typeorm'
+import { Role } from '@things-factory/auth-base'
 import { TutorialRole } from '../../../entities'
 
 export const tutorialRolesResolver = {

@@ -8,7 +8,7 @@ export const TutorialPatch = gql`
     resourceUrl: String
     value: String
     duration: String
-    rank: String
+    rank: Int
     roles: [ObjectRef]
     cuFlag: String
   }

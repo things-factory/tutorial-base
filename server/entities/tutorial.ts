@@ -34,10 +34,10 @@ export class Tutorial {
   })
   duration: string
 
-  @Column({
+  @Column('int', {
     nullable: true
   })
-  rank: string
+  rank: number
 
   @CreateDateColumn()
   createdAt: Date

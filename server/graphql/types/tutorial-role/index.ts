@@ -37,7 +37,7 @@ export const Query = `
   tutorialRoles(filters: [Filter], pagination: Pagination, sortings: [Sorting]): TutorialRoleList
   tutorialRole(name: String!): TutorialRole
   tutorialRoleAssignments(tutorialId: String!): TutorialRoleList
-  listByRoles(name: String!): RoleList
+  listByRoles(filters: [Filter]): [RoleTutorial]
 `
 
 export const Types = [TutorialRole, NewTutorialRole, TutorialRolePatch, TutorialRoleList, RoleList, RoleTutorial]

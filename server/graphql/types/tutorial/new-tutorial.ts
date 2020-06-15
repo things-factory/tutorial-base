@@ -7,7 +7,7 @@ export const NewTutorial = gql`
     resourceUrl: String
     value: String
     duration: String
-    rank: String
+    rank: Int
     roles: [ObjectRef]
   }
 `

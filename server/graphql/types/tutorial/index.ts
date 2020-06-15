@@ -28,7 +28,7 @@ export const Mutation = `
 
 export const Query = `
   tutorials(filters: [Filter], pagination: Pagination, sortings: [Sorting]): TutorialList
-  tutorialsWithRoles(filters: [Filter]): [Tutorial]
+  tutorialsWithRoles(roleId: String!): [Tutorial]
   tutorial(name: String!): Tutorial
 `
 

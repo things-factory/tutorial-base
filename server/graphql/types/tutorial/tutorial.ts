@@ -9,7 +9,7 @@ export const Tutorial = gql`
     resourceUrl: String
     value: String
     duration: String
-    rank: String
+    rank: Int
     roles: [Role]
     updater: User
     creator: User
