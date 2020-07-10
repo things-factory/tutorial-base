@@ -1,8 +1,7 @@
-import { buildQuery, ListParam, convertListParams } from '@things-factory/shell'
-import { getRepository, Like, SelectQueryBuilder } from 'typeorm'
-import { Role } from '@things-factory/auth-base'
+import { ListParam, convertListParams } from '@things-factory/shell'
+import { getRepository, SelectQueryBuilder } from 'typeorm'
 import { Tutorial, TutorialRole } from '../../../entities'
-import { tutorialRoleResolver } from '../tutorial-role/tutorial-role'
+import { Role } from '@things-factory/auth-base'
 
 export const tutorialsResolver = {
   async tutorials(_: any, params: ListParam, context: any) {
@@ -14,7 +13,7 @@ export const tutorialsResolver = {
     return { items, total }
   },
 
-  async tutorialsWithRoles(_: any, params: ListParam, context: any) {
+  async tutorialsWithRoles(_: any, { roleNames }, context: any) {
     const qb: SelectQueryBuilder<Tutorial> = getRepository(Tutorial)
       .createQueryBuilder('tutorial')
       .select('tutorial.id', 'id')
@@ -25,11 +24,12 @@ export const tutorialsResolver = {
       .addSelect('tutorial.duration', 'duration')
       .addSelect('tutorial.rank', 'rank')
       .innerJoin(TutorialRole, 'tr', 'tr.tutorial_id = tutorial.id')
-      .where('tr.role_id = :roleId', { roleId: params.roleId })
+      .innerJoin(Role, 'role', 'role.id = tr.role_id')
+      .where('UPPER(role.name) IN (:roleNames)', { roleNames })
       .groupBy('tutorial.id')
       .orderBy('tutorial.rank')
 
-    let data = await qb.getRawMany()
+    let data = await qb.getMany()
     return data
   }
 }
