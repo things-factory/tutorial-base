@@ -14,6 +14,7 @@ export const tutorialsResolver = {
   },
 
   async tutorialsWithRoles(_: any, { roleNames }, context: any) {
+    let filter: string[] = roleNames.split(',')
     const qb: SelectQueryBuilder<Tutorial> = getRepository(Tutorial)
       .createQueryBuilder('tutorial')
       .select('tutorial.id', 'id')
@@ -25,7 +26,7 @@ export const tutorialsResolver = {
       .addSelect('tutorial.rank', 'rank')
       .innerJoin(TutorialRole, 'tr', 'tr.tutorial_id = tutorial.id')
       .innerJoin(Role, 'role', 'role.id = tr.role_id')
-      .where('UPPER(role.name) IN (:roleNames)', { roleNames })
+      .where('UPPER("role"."name") IN (:...asdf)', { asdf: filter })
       .groupBy('tutorial.id')
       .orderBy('tutorial.rank')
 
