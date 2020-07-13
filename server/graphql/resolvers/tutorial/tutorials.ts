@@ -30,7 +30,7 @@ export const tutorialsResolver = {
       .groupBy('tutorial.id')
       .orderBy('tutorial.rank')
 
-    let data = await qb.getMany()
+    let data = await qb.getRawMany()
     return data
   }
 }
