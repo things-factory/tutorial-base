@@ -26,7 +26,7 @@ export const tutorialsResolver = {
       .addSelect('tutorial.rank', 'rank')
       .innerJoin(TutorialRole, 'tr', 'tr.tutorial_id = tutorial.id')
       .innerJoin(Role, 'role', 'role.id = tr.role_id')
-      .where('UPPER("role"."name") IN (:...asdf)', { asdf: filter })
+      .where('UPPER(role.name) IN (:...input)', { input: filter })
       .groupBy('tutorial.id')
       .orderBy('tutorial.rank')
 
