@@ -14,7 +14,6 @@ export const tutorialRoleAssignmentsResolver = {
 
     let items: any[], total: number
     ;[items, total] = await getRepository(Role).findAndCount({
-      where: { domain: context.state.domain },
       relations: ['domain', 'creator', 'updater']
     })
 

@@ -8,7 +8,7 @@ export const updateRoleTutorial = {
     return await getManager().transaction(async () => {
       try {
         const tutorial: Tutorial = await getRepository(Tutorial).findOne({
-          where: { domain: context.state.domain, id: tutorialId }
+          where: { id: tutorialId }
         })
         if (!tutorial) throw new Error('tutorial not exists')
 
@@ -25,7 +25,7 @@ export const updateRoleTutorial = {
           })
         })
 
-        const tutorials = await getRepository(Tutorial).find({ domain: context.state.domain })
+        const tutorials = await getRepository(Tutorial).find()
         const rolesTutorial = await getRepository(TutorialRole).find({ where: { tutorial }, relations: ['tutorial'] })
         return tutorials.map((tutorial: Tutorial) => {
           return {
