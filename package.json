@@ -30,8 +30,8 @@
     "stop": "things-factory-stop tutorial-base"
   },
   "dependencies": {
-    "@things-factory/auth-base": "^2.5.0",
-    "@things-factory/shell": "*"
+    "@things-factory/auth-base": "2.x.x",
+    "@things-factory/shell": "2.x.x"
   },
   "devDependencies": {}
 }
